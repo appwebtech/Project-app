@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 	before_action :wa_githomo 
 
 	def create
-		@task = @project.task.create(masaku)
+		@task = @project.tasks.create(masaku)
 
 		redirect_to @project 
 	end
@@ -16,7 +16,14 @@ class TasksController < ApplicationController
 	end
 
 	def destroy
-		
+		@task = @project.tasks.find(params[:id])
+		if @task.destroy 
+			flash[:success]= "Task was deleted"
+		else
+			flash[:error] = "Task was not deleted"
+		end
+		redirect_to @project
+
 	end
 
 	private

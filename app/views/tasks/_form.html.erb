@@ -1,0 +1,4 @@
+<%= form_for([@project, @project.tasks.build]) do |shenzi| %>
+	<%= shenzi.text_field :content, placeholder: "New Activity" %>
+	<%= shenzi.submit %>
+<% end %>
